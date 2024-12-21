@@ -5,8 +5,9 @@ const WebSocket = require("ws");
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
-
+const path = require('path');
 app.use(express.json());
+app.use(express.static(path.join(__dirname)));
 
 // Mock database for simplicity
 let deviceState = {

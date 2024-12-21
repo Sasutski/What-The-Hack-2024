@@ -111,3 +111,7 @@ footer {
 .button:hover {
     background-color: #005fa3;
 }
+
+.main-content-text {
+    text-align: center;
+}
