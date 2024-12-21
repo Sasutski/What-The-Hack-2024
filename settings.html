@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - SmartThings Samsung App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Settings</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html#dashboard">Dashboard</a></li>
+            <li><a href="index.html#devices">Devices</a></li>
+            <li><a href="index.html#settings">Settings</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="profile-settings">
+            <h2>Profile Settings</h2>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Save Changes</button>
+            </form>
+        </section>
+        <section id="app-preferences">
+            <h2>App Preferences</h2>
+            <form id="preferences-form">
+                <label for="theme">Theme:</label>
+                <select id="theme" name="theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+                
+                <label for="notifications">Notifications:</label>
+                <input type="checkbox" id="notifications" name="notifications">
+                
+                <button type="submit">Save Preferences</button>
+            </form>
+            <script src="main.js"></script>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 SmartThings Samsung App</p>
+    </footer>
+</body>
+</html>
