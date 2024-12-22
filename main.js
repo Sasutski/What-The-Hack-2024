@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const ws = new WebSocket("ws://localhost:3000");
-    
+
     // When connection is opened
     ws.addEventListener("open", () => {
         console.log("Connected to WebSocket server");
@@ -76,3 +76,4 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Profile updated successfully!');
     });
 });
+
