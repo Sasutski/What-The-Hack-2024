@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -114,4 +115,75 @@ footer {
 
 .main-content-text {
     text-align: center;
+}
+#devices {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px; /* Increase the gap between device cards */
+}
+
+.device-card, .preset-card {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(65, 65, 65);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px; /* Increase the margin at the bottom of each card */
+}
+
+.device-icon img {
+    width: 50px;
+    height: 50px;
+}
+
+.device-info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.device-info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.device-info p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+.device-action, .preset-card form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preset-card label {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: white;
+}
+
+.preset-card select {
+    margin-bottom: 20px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.button, .save-button, .toggle-button {
+    background-color: #888;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover, .save-button:hover, .toggle-button:hover {
+    background-color: #666;
 }

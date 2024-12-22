@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const ws = new WebSocket("ws://localhost:3000");
-    
+
     // When connection is opened
     ws.addEventListener("open", () => {
         console.log("Connected to WebSocket server");
@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ws.send(message);
     });
 
-
     const themeSelect = document.getElementById('theme');
     const preferencesForm = document.getElementById('preferences-form');
 
@@ -46,9 +45,27 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', selectedTheme);
         alert('Preferences saved!');
     });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
+    const fanSelect = document.getElementById('fan');
+    const presetForm = document.getElementById('preset-form');
+    
+    // Load saved preset from localStorage
+    const savedPreset = JSON.parse(localStorage.getItem('preset'));
+    if (savedPreset) {
+        fanSelect.value = savedPreset.fanSpeed;
+    }
+
+    // Handle form submission
+    presetForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const selectedFan = fanSelect.value;
+        const presetData = {
+            fanSpeed: selectedFan
+        };
+        localStorage.setItem('preset', JSON.stringify(presetData));
+        alert('Preset saved!');
+    });
+
     const profileForm = document.getElementById('profile-form');
 
     // Load saved profile settings from local storage
@@ -76,3 +93,20 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Profile updated successfully!');
     });
 });
+function toggleFan() {
+    const fanStatus = document.getElementById('fan-status');
+    if (fanStatus.textContent === 'Off') {
+        fanStatus.textContent = 'On';
+    } else {
+        fanStatus.textContent = 'Off';
+    }
+}
+
+function toggleLight() {
+    const lightStatus = document.getElementById('light-status');
+    if (lightStatus.textContent === 'Off') {
+        lightStatus.textContent = 'On';
+    } else {
+        lightStatus.textContent = 'Off';
+    }
+}
