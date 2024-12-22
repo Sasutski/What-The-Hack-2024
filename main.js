@@ -1,4 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const ws = new WebSocket("ws://localhost:3000");
+    
+    // When connection is opened
+    ws.addEventListener("open", () => {
+        console.log("Connected to WebSocket server");
+        ws.send("Hello from the browser!");
+    });
+
+    // When a message is received
+    ws.addEventListener("message", (event) => {
+        console.log("Message from server:", event.data);
+
+        // You can update the UI with the received data
+        const dashboard = document.querySelector("#dashboard");
+        if (dashboard) {
+            const newData = document.createElement("p");
+            newData.textContent = `Server: ${event.data}`;
+            dashboard.appendChild(newData);
+        }
+    });
+
+    // Example usage: Send message from form submission
+    document.querySelector("#profile-form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const message = "Profile settings updated!";
+        ws.send(message);
+    });
+
+
     const themeSelect = document.getElementById('theme');
     const preferencesForm = document.getElementById('preferences-form');
 
