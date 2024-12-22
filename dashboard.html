@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.className = savedTheme;
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Dashboard</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./dashboard.html">Dashboard</a></li>
+            <li><a href="./settings.html">Settings</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="preset-settings">
+            <h2>Preset</h2>
+            <div class="preset-card">
+                <form id="preset-form">
+                    <label for="fan">Fan:</label>
+
+                    <select id="fan" name="fan">
+                        <option value="on">On</option>
+                        <option value="off">Off</option>
+                    </select>
+                    <button type="submit" class="save-button">Save Preset</button>
+                </form>
+            </div>
+        </section>
+        <h2>Devices</h2>
+        <section id="devices">
+            
+            <div class="device-card">
+                <div class="device-icon">
+                    
+                </div>
+                <div class="device-info">
+                    <h3>Fan</h3>
+                    <p>Status: <span id="fan-status">Off</span></p>
+                </div>
+                <div class="device-action">
+                    <button class="toggle-button" onclick="toggleFan()">Toggle</button>
+                </div>
+            </div>
+            <div class="device-card">
+                <div class="device-icon">
+                </div>
+                <div class="device-info">
+                    <h3>Light</h3>
+                    <p>Status: <span id="light-status">Off</span></p>
+                </div>
+                <div class="device-action">
+                    <button class="toggle-button" onclick="toggleLight()">Toggle</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 SmartThings Samsung App</p>
+    </footer>
+    <script src="./main.js"></script>
+</body>
+</html>
