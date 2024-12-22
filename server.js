@@ -9,6 +9,10 @@ const path = require('path');
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "dashboard.html"));
+});
+
 // Mock database for simplicity
 let deviceState = {
     fanSpeed: 0,
@@ -40,10 +44,20 @@ app.get("/light", (req, res) => {
     res.json({ lightOn: deviceState.lightOn });
 });
 
-app.post("/light", (req, res) => {
+
+app.post('/light', (req, res) => {
+    console.log("Request received: ", req.body);
     const { lightOn } = req.body;
+    if (lightOn === undefined) {
+        return res.status(400).json({ error: "Invalid data sent" });
+    }
+
+    // Update device state
     deviceState.lightOn = lightOn;
+
+    // Broadcast the new state to connected devices (like ESP32)
     broadcast({ type: "lightState", lightOn });
+
     res.status(200).json({ message: "Light state updated.", lightOn });
 });
 
@@ -80,4 +94,4 @@ wss.on("connection", (ws) => {
 });
 
 const PORT = 3000;
-server.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+server.listen(PORT, '0.0.0.0', () => console.log(`Server running on http://localhost:${PORT} test`));
